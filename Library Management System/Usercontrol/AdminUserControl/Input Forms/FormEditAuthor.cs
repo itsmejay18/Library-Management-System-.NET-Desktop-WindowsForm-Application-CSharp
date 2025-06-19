@@ -20,7 +20,7 @@ namespace Library_Management_System.Usercontrol.AdminUserControl.Input_Forms
             LoadAuthorData();
         }
         private readonly int _authorId;
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
         private void EditAuthor()
         {
             string authorName = txtAuthor.Text.Trim();

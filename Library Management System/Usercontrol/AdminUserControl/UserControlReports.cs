@@ -18,7 +18,7 @@ namespace Library_Management_System.Usercontrol
         {
             InitializeComponent();
         }
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
         private void LoadBooksReport(string searchQuery = "")
         {
             string query = @"
@@ -328,6 +328,16 @@ namespace Library_Management_System.Usercontrol
         }
 
         private void dataGridViewBooks_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvBorrowers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

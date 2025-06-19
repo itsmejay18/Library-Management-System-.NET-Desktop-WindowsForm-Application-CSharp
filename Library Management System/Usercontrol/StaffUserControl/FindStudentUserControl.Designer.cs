@@ -61,9 +61,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblMemberType = new System.Windows.Forms.Label();
-            this.btnEditMember = new System.Windows.Forms.Button();
             this.btnAddMember = new System.Windows.Forms.Button();
             this.btnDeleteMember = new System.Windows.Forms.Button();
+            this.filter = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -377,16 +377,16 @@
             // txtSearchMember
             // 
             this.txtSearchMember.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchMember.Location = new System.Drawing.Point(266, 36);
+            this.txtSearchMember.Location = new System.Drawing.Point(151, 38);
             this.txtSearchMember.Name = "txtSearchMember";
-            this.txtSearchMember.Size = new System.Drawing.Size(146, 29);
+            this.txtSearchMember.Size = new System.Drawing.Size(158, 29);
             this.txtSearchMember.TabIndex = 24;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(127, 39);
+            this.label1.Location = new System.Drawing.Point(13, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 21);
             this.label1.TabIndex = 23;
@@ -412,20 +412,6 @@
             this.lblMemberType.Size = new System.Drawing.Size(17, 21);
             this.lblMemberType.TabIndex = 48;
             this.lblMemberType.Text = "?";
-            // 
-            // btnEditMember
-            // 
-            this.btnEditMember.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnEditMember.FlatAppearance.BorderSize = 0;
-            this.btnEditMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditMember.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditMember.Location = new System.Drawing.Point(618, 10);
-            this.btnEditMember.Name = "btnEditMember";
-            this.btnEditMember.Size = new System.Drawing.Size(94, 20);
-            this.btnEditMember.TabIndex = 25;
-            this.btnEditMember.Text = "Edit";
-            this.btnEditMember.UseVisualStyleBackColor = false;
-            this.btnEditMember.Click += new System.EventHandler(this.btnEditMember_Click);
             // 
             // btnAddMember
             // 
@@ -455,10 +441,22 @@
             this.btnDeleteMember.UseVisualStyleBackColor = false;
             this.btnDeleteMember.Click += new System.EventHandler(this.btnDeleteMember_Click);
             // 
+            // filter
+            // 
+            this.filter.FormattingEnabled = true;
+            this.filter.Items.AddRange(new object[] {
+            "Member ID",
+            "Full Name"});
+            this.filter.Location = new System.Drawing.Point(315, 37);
+            this.filter.Name = "filter";
+            this.filter.Size = new System.Drawing.Size(97, 21);
+            this.filter.TabIndex = 82;
+            // 
             // FindStudentUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.filter);
             this.Controls.Add(this.lblBookStatus);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.lblBookID);
@@ -489,7 +487,6 @@
             this.Controls.Add(this.btnAddMember);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnDeleteMember);
-            this.Controls.Add(this.btnEditMember);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearchMember);
             this.Controls.Add(this.label1);
@@ -539,8 +536,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblMemberType;
-        private System.Windows.Forms.Button btnEditMember;
         private System.Windows.Forms.Button btnAddMember;
         private System.Windows.Forms.Button btnDeleteMember;
+        private System.Windows.Forms.ComboBox filter;
     }
 }

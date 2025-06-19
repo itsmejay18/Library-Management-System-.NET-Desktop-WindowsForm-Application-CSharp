@@ -40,6 +40,7 @@
             this.rbtnAdmin = new System.Windows.Forms.RadioButton();
             this.rbtnStaff = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbtnStudent = new System.Windows.Forms.RadioButton();
             this.pictureBoxExit = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExit)).BeginInit();
@@ -55,7 +56,7 @@
             this.label1.Size = new System.Drawing.Size(250, 45);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome Back";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+          
             // 
             // label2
             // 
@@ -73,9 +74,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label3.Location = new System.Drawing.Point(104, 182);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 21);
+            this.label3.Size = new System.Drawing.Size(48, 21);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Username";
+            this.label3.Text = "Email";
             // 
             // txtUsername
             // 
@@ -134,7 +135,7 @@
             // 
             this.rbtnAdmin.AutoSize = true;
             this.rbtnAdmin.Checked = true;
-            this.rbtnAdmin.Location = new System.Drawing.Point(63, 28);
+            this.rbtnAdmin.Location = new System.Drawing.Point(3, 28);
             this.rbtnAdmin.Name = "rbtnAdmin";
             this.rbtnAdmin.Size = new System.Drawing.Size(74, 25);
             this.rbtnAdmin.TabIndex = 0;
@@ -145,7 +146,7 @@
             // rbtnStaff
             // 
             this.rbtnStaff.AutoSize = true;
-            this.rbtnStaff.Location = new System.Drawing.Point(183, 28);
+            this.rbtnStaff.Location = new System.Drawing.Point(123, 28);
             this.rbtnStaff.Name = "rbtnStaff";
             this.rbtnStaff.Size = new System.Drawing.Size(59, 25);
             this.rbtnStaff.TabIndex = 1;
@@ -154,6 +155,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rbtnStudent);
             this.groupBox1.Controls.Add(this.rbtnStaff);
             this.groupBox1.Controls.Add(this.rbtnAdmin);
             this.groupBox1.Location = new System.Drawing.Point(108, 320);
@@ -162,6 +164,17 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Role";
+            // 
+            // rbtnStudent
+            // 
+            this.rbtnStudent.AutoSize = true;
+            this.rbtnStudent.Location = new System.Drawing.Point(233, 28);
+            this.rbtnStudent.Name = "rbtnStudent";
+            this.rbtnStudent.Size = new System.Drawing.Size(81, 25);
+            this.rbtnStudent.TabIndex = 11;
+            this.rbtnStudent.TabStop = true;
+            this.rbtnStudent.Text = "Student";
+            this.rbtnStudent.UseVisualStyleBackColor = true;
             // 
             // pictureBoxExit
             // 
@@ -218,6 +231,7 @@
         private System.Windows.Forms.RadioButton rbtnStaff;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBoxExit;
+        private System.Windows.Forms.RadioButton rbtnStudent;
     }
 }
 

@@ -47,8 +47,6 @@
             this.txtYear = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPublisher = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.rtbDescription = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +58,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(865, 100);
+            this.panel1.Size = new System.Drawing.Size(469, 100);
             this.panel1.TabIndex = 9;
             // 
             // label2
@@ -73,7 +71,7 @@
             this.label2.Size = new System.Drawing.Size(145, 21);
             this.label2.TabIndex = 1;
             this.label2.Text = "input details here";
-            this.label2.Click += new System.EventHandler(this.label1_Click);
+           
             // 
             // label1
             // 
@@ -85,7 +83,7 @@
             this.label1.Size = new System.Drawing.Size(200, 39);
             this.label1.TabIndex = 1;
             this.label1.Text = "Add a Book";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+           
             // 
             // label3
             // 
@@ -97,7 +95,7 @@
             this.label3.Size = new System.Drawing.Size(78, 21);
             this.label3.TabIndex = 10;
             this.label3.Text = "Book Title";
-            this.label3.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // txtTitle
             // 
@@ -116,7 +114,7 @@
             this.label4.Size = new System.Drawing.Size(104, 21);
             this.label4.TabIndex = 11;
             this.label4.Text = "Author Name";
-            this.label4.Click += new System.EventHandler(this.label1_Click);
+           
             // 
             // txtAuthor
             // 
@@ -135,7 +133,7 @@
             this.label5.Size = new System.Drawing.Size(73, 21);
             this.label5.TabIndex = 13;
             this.label5.Text = "Category";
-            this.label5.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // label6
             // 
@@ -147,7 +145,7 @@
             this.label6.Size = new System.Drawing.Size(52, 21);
             this.label6.TabIndex = 16;
             this.label6.Text = "Genre";
-            this.label6.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // comboCategory
             // 
@@ -200,7 +198,7 @@
             this.label7.Size = new System.Drawing.Size(44, 21);
             this.label7.TabIndex = 14;
             this.label7.Text = "ISBN";
-            this.label7.Click += new System.EventHandler(this.label1_Click);
+           
             // 
             // txtISBN
             // 
@@ -219,14 +217,14 @@
             this.label8.Size = new System.Drawing.Size(112, 21);
             this.label8.TabIndex = 15;
             this.label8.Text = "Year Published";
-            this.label8.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(728, 512);
+            this.btnAdd.Location = new System.Drawing.Point(250, 512);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(124, 40);
             this.btnAdd.TabIndex = 7;
@@ -239,7 +237,7 @@
             this.btnCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(598, 512);
+            this.btnCancel.Location = new System.Drawing.Point(120, 512);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(124, 40);
             this.btnCancel.TabIndex = 8;
@@ -264,41 +262,20 @@
             this.label9.Size = new System.Drawing.Size(75, 21);
             this.label9.TabIndex = 12;
             this.label9.Text = "Publisher";
-            this.label9.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // txtPublisher
             // 
-            this.txtPublisher.Location = new System.Drawing.Point(30, 278);
+            this.txtPublisher.Location = new System.Drawing.Point(35, 278);
             this.txtPublisher.Name = "txtPublisher";
             this.txtPublisher.Size = new System.Drawing.Size(380, 29);
             this.txtPublisher.TabIndex = 2;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(434, 126);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 21);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Description";
-            this.label10.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // rtbDescription
-            // 
-            this.rtbDescription.Location = new System.Drawing.Point(438, 150);
-            this.rtbDescription.Name = "rtbDescription";
-            this.rtbDescription.Size = new System.Drawing.Size(414, 340);
-            this.rtbDescription.TabIndex = 17;
-            this.rtbDescription.Text = "";
             // 
             // FormAddBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(865, 564);
-            this.Controls.Add(this.rtbDescription);
+            this.ClientSize = new System.Drawing.Size(469, 564);
             this.Controls.Add(this.txtYear);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
@@ -307,7 +284,6 @@
             this.Controls.Add(this.txtISBN);
             this.Controls.Add(this.txtPublisher);
             this.Controls.Add(this.txtAuthor);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
@@ -351,7 +327,5 @@
         private System.Windows.Forms.DateTimePicker txtYear;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtPublisher;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.RichTextBox rtbDescription;
     }
 }

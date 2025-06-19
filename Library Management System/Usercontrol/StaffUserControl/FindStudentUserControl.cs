@@ -14,7 +14,7 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
 {
     public partial class FindStudentUserControl : UserControl
     {
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
 
         public FindStudentUserControl()
         {
@@ -23,24 +23,30 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
         private int studentId; // Class-level variable to store Student ID
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string studentName = txtSearchMember.Text.Trim();
+            string input = txtSearchMember.Text.Trim();
+            string selectedFilter = filter.SelectedItem?.ToString();
 
-            if (!string.IsNullOrEmpty(studentName))
+            if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(selectedFilter))
             {
-                SearchStudent(studentName);
+                MessageBox.Show("Please enter a value and select a filter type.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
-            {
-                MessageBox.Show("Please enter a student name to search.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
 
-        private void SearchStudent(string studentName)
-        {
-            string query = @"
+            string queryCondition = "";
+            if (selectedFilter == "Member ID")
+            {
+                queryCondition = "m.Member_Id = @Input";
+            }
+            else if (selectedFilter == "Full Name")
+            {
+                queryCondition = "CONCAT(m.first_name, ' ', m.last_name) LIKE @Input";
+                input = "%" + input + "%";
+            }
+
+            string query = $@"
         SELECT 
             m.Member_Id AS 'Student ID',
-            m.last_name AS 'Name',
+            CONCAT(m.first_name, ' ', m.last_name) AS 'Name',
             m.Email AS 'Email',
             m.Phone AS 'Phone',
             m.member_type AS 'Type',
@@ -59,7 +65,7 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
         LEFT JOIN 
             Books_tbl bk ON br.Book_Id = bk.Book_Id
         WHERE 
-            m.last_Name LIKE @Name
+            {queryCondition}
         ORDER BY 
             br.Borrow_Date DESC";
 
@@ -70,18 +76,15 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                     conn.Open();
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Name", "%" + studentName + "%");
+                        cmd.Parameters.AddWithValue("@Input", input);
                         MySqlDataReader reader = cmd.ExecuteReader();
 
-                        // Clear existing labels or fields
                         ClearFields();
 
                         if (reader.Read())
                         {
-                            // Store the Student ID in the class-level variable
                             studentId = Convert.ToInt32(reader["Student ID"]);
 
-                            // Fill Student Details
                             lblStudentID.Text = reader["Student ID"].ToString();
                             lblName.Text = reader["Name"].ToString();
                             lblEmail.Text = reader["Email"].ToString();
@@ -90,7 +93,6 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                             lblMembershipDate.Text = Convert.ToDateTime(reader["Membership Date"]).ToShortDateString();
                             lblStatus.Text = reader["Status"].ToString();
 
-                            // Fill Issued Book Details
                             lblTransactionID.Text = reader["Borrow ID"].ToString();
                             lblBookID.Text = reader["Book ID"].ToString();
                             lblBookTitle.Text = reader["Book Title"].ToString();
@@ -110,6 +112,8 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
         private void ClearFields()
         {
@@ -198,5 +202,15 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                 MessageBox.Show($"Error deleting member: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void FindStudentUserControl_Load(object sender, EventArgs e)
+        {
+            filter.Items.Clear();
+            filter.Items.Add("Member ID");
+            filter.Items.Add("Full Name");
+            filter.SelectedIndex = 0; // Default selection
+        }
+
+
     }
 }

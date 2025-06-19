@@ -18,80 +18,68 @@ namespace Library_Management_System.Usercontrol
         public UserControlBooks()
         {
             InitializeComponent();
+            InitializeFilterComboBox();
             LoadBooksData();
+            this.Invalidate();
+            this.Update();
         }
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
-        private void LoadBooksData(string searchQuery = "")
+
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
+
+        // Initialize your filter ComboBox items
+        private void InitializeFilterComboBox()
+        {
+            filter.Items.Clear();
+            filter.Items.Add("Id");
+            filter.Items.Add("Title");
+            filter.Items.Add("Category");
+            filter.Items.Add("Genre");
+            filter.Items.Add("ISBN");
+            filter.Items.Add("Year Publish");
+            filter.SelectedIndex = 1; // default to Title
+        }
+
+        // Load books with optional filterColumn and searchQuery
+        private void LoadBooksData(string filterColumn = "", string searchQuery = "")
         {
             try
             {
-                // Ensure connection string is valid
-                if (string.IsNullOrEmpty(connectionString))
-                {
-                    MessageBox.Show("Connection string is not initialized.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Check if DataGridView is initialized
-                if (dgvBooks == null)
-                {
-                    MessageBox.Show("DataGridView is not initialized.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
 
-                    // Updated query to join with Authors_tbl and Publishers_tbl
                     string query = @"
-                SELECT 
-                    b.Book_Id AS 'Book ID', 
-                    b.Title AS 'Title', 
-                    b.Category AS 'Category',
-                    b.ISBN AS 'ISBN',
-                    b.Genre AS 'Genre',
-                    a.Author_Name AS 'Author Name', 
-                    p.Publisher_Name AS 'Publisher Name', 
-                    b.Year_Published AS 'Year Published',
-                    b.Book_Status AS 'Status',
-                    b.description AS 'Description'
-                FROM Books_tbl b
-                LEFT JOIN Authors_tbl a ON b.Author_Id = a.Author_Id
-                LEFT JOIN Publishers_tbl p ON b.Publisher_Id = p.Publisher_Id";
+                        SELECT 
+                            b.Book_Id AS 'Book ID', 
+                            b.Title AS 'Title', 
+                            b.Category AS 'Category',
+                            b.ISBN AS 'ISBN',
+                            b.Genre AS 'Genre',
+                            a.Author_Name AS 'Author Name', 
+                            p.Publisher_Name AS 'Publisher Name', 
+                            b.Year_Published AS 'Year Published',
+                            b.Book_Status AS 'Status',
+                            b.description AS 'Description'
+                        FROM Books_tbl b
+                        LEFT JOIN Authors_tbl a ON b.Author_Id = a.Author_Id
+                        LEFT JOIN Publishers_tbl p ON b.Publisher_Id = p.Publisher_Id";
 
-                    // Add search filter
-                    if (!string.IsNullOrEmpty(searchQuery))
+                    if (!string.IsNullOrEmpty(filterColumn) && !string.IsNullOrEmpty(searchQuery))
                     {
-                        query += @"
-                    WHERE b.Book_Id LIKE @Search
-                    OR b.Title LIKE @Search
-                    OR a.Author_Name LIKE @Search
-                    OR p.Publisher_Name LIKE @Search
-                    OR b.Category LIKE @Search
-                    OR b.Genre LIKE @Search
-                    OR b.Book_Status LIKE @Search";
+                        query += $" WHERE {filterColumn} LIKE @Search";
                     }
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        if (!string.IsNullOrEmpty(searchQuery))
+                        if (!string.IsNullOrEmpty(filterColumn) && !string.IsNullOrEmpty(searchQuery))
                         {
                             cmd.Parameters.AddWithValue("@Search", $"%{searchQuery}%");
                         }
 
-                        // Load the data into a DataTable and bind it to the DataGridView
                         MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-                        if (dataTable != null)
-                        {
-                            dgvBooks.DataSource = dataTable;
-                        }
-                        else
-                        {
-                            MessageBox.Show("No data returned from the database.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        dgvBooks.DataSource = dataTable;
                     }
                 }
             }
@@ -101,54 +89,89 @@ namespace Library_Management_System.Usercontrol
             }
         }
 
-        private void UserControlBooks_Load(object sender, EventArgs e)
+        private void btnSearchBooks_Click(object sender, EventArgs e)
         {
+            string searchQuery = txtSearchBooks.Text.Trim();
+            string filterColumn = "";
+
+            if (filter.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a filter category.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            switch (filter.SelectedItem.ToString())
+            {
+                case "Id":
+                    filterColumn = "b.Book_Id";
+                    break;
+                case "Title":
+                    filterColumn = "b.Title";
+                    break;
+                case "Category":
+                    filterColumn = "b.Category";
+                    break;
+                case "Genre":
+                    filterColumn = "b.Genre";
+                    break;
+                case "ISBN":
+                    filterColumn = "b.ISBN";
+                    break;
+                case "Year Publish":
+                    filterColumn = "b.Year_Published";
+                    break;
+                default:
+                    filterColumn = "b.Title";
+                    break;
+            }
+
+            LoadBooksData(filterColumn, searchQuery);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             FormAddBook formAddBook = new FormAddBook();
             formAddBook.ShowDialog();
-        }
-
-        private void btnSearchBooks_Click(object sender, EventArgs e)
-        {
-            string searchQuery = txtSearchBooks.Text.Trim();
-            LoadBooksData(searchQuery);
+            LoadBooksData();
+            this.Invalidate();
+            this.Update();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             try
             {
-                if (dgvBooks.SelectedRows.Count > 0) // Ensure a row is selected
+                if (dgvBooks.SelectedRows.Count > 0)
                 {
-                    // Retrieve the Book_Id from the DataGridView
                     DataGridViewRow selectedRow = dgvBooks.SelectedRows[0];
 
-                    // Check if the column exists before accessing
                     if (dgvBooks.Columns.Contains("Book ID"))
                     {
                         int bookId = Convert.ToInt32(selectedRow.Cells["Book ID"].Value);
-
-                        // Open the update book form with the selected Book_Id
                         FormEditBook updateBookForm = new FormEditBook(bookId);
                         updateBookForm.ShowDialog();
+                        LoadBooksData();
+                        this.Invalidate();
+                        this.Update();
                     }
                     else
                     {
-                        MessageBox.Show("The column 'Book_Id' does not exist in the DataGridView. Ensure your query includes it.",
+                        MessageBox.Show("The column 'Book ID' does not exist in the DataGridView. Ensure your query includes it.",
                                         "Column Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
                     MessageBox.Show("Please select a row to edit.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Invalidate();
+                    this.Update();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Invalidate();
+                this.Update();
             }
         }
 
@@ -162,11 +185,16 @@ namespace Library_Management_System.Usercontrol
                 if (result == DialogResult.Yes)
                 {
                     DeleteBookFromDatabase(bookId);
+                    LoadBooksData();
+                    this.Invalidate();
+                    this.Update();
                 }
             }
             else
             {
                 MessageBox.Show("Please select a book to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Invalidate();
+                this.Update();
             }
         }
 
@@ -182,13 +210,11 @@ namespace Library_Management_System.Usercontrol
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@BookId", bookId);
-
                         int rowsAffected = cmd.ExecuteNonQuery();
 
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Book deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadBooksData(); // Refresh the DataGridView
                         }
                         else
                         {
@@ -205,23 +231,27 @@ namespace Library_Management_System.Usercontrol
 
         private void dgvBooks_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // Check if the column being formatted is the 'Status' column
             if (dgvBooks.Columns[e.ColumnIndex].Name == "Status" && e.Value != null)
             {
                 string status = e.Value.ToString();
 
-                // Apply background color based on the status value
                 if (status == "Available")
                 {
-                    e.CellStyle.BackColor = Color.LightGreen; // Green for 'Available'
-                    e.CellStyle.ForeColor = Color.White;      // Optional: Black text color
+                    e.CellStyle.BackColor = Color.LightGreen;
+                    e.CellStyle.ForeColor = Color.White;
                 }
                 else if (status == "Borrowed")
                 {
-                    e.CellStyle.BackColor = Color.LightCoral; // Red for 'Borrowed'
-                    e.CellStyle.ForeColor = Color.White;      // Optional: White text color
+                    e.CellStyle.BackColor = Color.LightCoral;
+                    e.CellStyle.ForeColor = Color.White;
                 }
             }
+        }
+
+        private void UserControlBooks_Load(object sender, EventArgs e)
+        {
+            // Optional: reload data on load
+            LoadBooksData();
         }
     }
 }

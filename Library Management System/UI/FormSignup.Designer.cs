@@ -32,7 +32,7 @@
             this.btnSignup = new System.Windows.Forms.Button();
             this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtNewUsername = new System.Windows.Forms.TextBox();
+            this.txtNewFullname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +42,10 @@
             this.rbtnAdmin = new System.Windows.Forms.RadioButton();
             this.rbtnStaff = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbtnStudent = new System.Windows.Forms.RadioButton();
             this.pictureBoxExit = new System.Windows.Forms.PictureBox();
+            this.txtNewEmail = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExit)).BeginInit();
             this.SuspendLayout();
@@ -79,22 +82,23 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Password";
             // 
-            // txtNewUsername
+            // txtNewFullname
             // 
-            this.txtNewUsername.Location = new System.Drawing.Point(120, 209);
-            this.txtNewUsername.Name = "txtNewUsername";
-            this.txtNewUsername.Size = new System.Drawing.Size(317, 29);
-            this.txtNewUsername.TabIndex = 0;
+            this.txtNewFullname.Location = new System.Drawing.Point(120, 157);
+            this.txtNewFullname.Name = "txtNewFullname";
+            this.txtNewFullname.Size = new System.Drawing.Size(317, 29);
+            this.txtNewFullname.TabIndex = 0;
+            this.txtNewFullname.TextChanged += new System.EventHandler(this.txtNewFullname_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(116, 185);
+            this.label3.Location = new System.Drawing.Point(116, 133);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 21);
+            this.label3.Size = new System.Drawing.Size(74, 21);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Username";
+            this.label3.Text = "Fullname";
             // 
             // label2
             // 
@@ -152,27 +156,30 @@
             // rbtnAdmin
             // 
             this.rbtnAdmin.AutoSize = true;
-            this.rbtnAdmin.Location = new System.Drawing.Point(61, 46);
+            this.rbtnAdmin.Location = new System.Drawing.Point(8, 46);
             this.rbtnAdmin.Name = "rbtnAdmin";
             this.rbtnAdmin.Size = new System.Drawing.Size(74, 25);
             this.rbtnAdmin.TabIndex = 3;
             this.rbtnAdmin.TabStop = true;
             this.rbtnAdmin.Text = "Admin";
             this.rbtnAdmin.UseVisualStyleBackColor = true;
+            this.rbtnAdmin.CheckedChanged += new System.EventHandler(this.rbtnAdmin_CheckedChanged);
             // 
             // rbtnStaff
             // 
             this.rbtnStaff.AutoSize = true;
-            this.rbtnStaff.Location = new System.Drawing.Point(203, 46);
+            this.rbtnStaff.Location = new System.Drawing.Point(132, 46);
             this.rbtnStaff.Name = "rbtnStaff";
             this.rbtnStaff.Size = new System.Drawing.Size(59, 25);
             this.rbtnStaff.TabIndex = 4;
             this.rbtnStaff.TabStop = true;
             this.rbtnStaff.Text = "Staff";
             this.rbtnStaff.UseVisualStyleBackColor = true;
+            this.rbtnStaff.CheckedChanged += new System.EventHandler(this.rbtnStaff_CheckedChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rbtnStudent);
             this.groupBox1.Controls.Add(this.rbtnStaff);
             this.groupBox1.Controls.Add(this.rbtnAdmin);
             this.groupBox1.Location = new System.Drawing.Point(120, 378);
@@ -181,6 +188,18 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Role";
+            // 
+            // rbtnStudent
+            // 
+            this.rbtnStudent.AutoSize = true;
+            this.rbtnStudent.Location = new System.Drawing.Point(232, 46);
+            this.rbtnStudent.Name = "rbtnStudent";
+            this.rbtnStudent.Size = new System.Drawing.Size(81, 25);
+            this.rbtnStudent.TabIndex = 5;
+            this.rbtnStudent.TabStop = true;
+            this.rbtnStudent.Text = "Student";
+            this.rbtnStudent.UseVisualStyleBackColor = true;
+            this.rbtnStudent.CheckedChanged += new System.EventHandler(this.rbtnStudent_CheckedChanged);
             // 
             // pictureBoxExit
             // 
@@ -193,11 +212,31 @@
             this.pictureBoxExit.TabStop = false;
             this.pictureBoxExit.Click += new System.EventHandler(this.pictureBoxExit_Click);
             // 
+            // txtNewEmail
+            // 
+            this.txtNewEmail.Location = new System.Drawing.Point(120, 215);
+            this.txtNewEmail.Name = "txtNewEmail";
+            this.txtNewEmail.Size = new System.Drawing.Size(317, 29);
+            this.txtNewEmail.TabIndex = 12;
+            this.txtNewEmail.TextChanged += new System.EventHandler(this.txtNewEmail_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label6.Location = new System.Drawing.Point(116, 191);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 21);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Email";
+            // 
             // FormSignup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 681);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtNewEmail);
             this.Controls.Add(this.pictureBoxExit);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
@@ -206,7 +245,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtNewPassword);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtNewUsername);
+            this.Controls.Add(this.txtNewFullname);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -229,7 +268,7 @@
         private System.Windows.Forms.Button btnSignup;
         private System.Windows.Forms.TextBox txtNewPassword;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtNewUsername;
+        private System.Windows.Forms.TextBox txtNewFullname;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -240,5 +279,8 @@
         private System.Windows.Forms.RadioButton rbtnStaff;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBoxExit;
+        private System.Windows.Forms.TextBox txtNewEmail;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RadioButton rbtnStudent;
     }
 }

@@ -8,10 +8,11 @@ namespace Library_Management_System.Class
 {
     internal class CurrentSession
     {
-        // Property to store the logged-in user's username
-        public static string Username { get; set; } = null;
+        public static string Email { get; set; } //supabase
+        public static string Role { get; set; } //supabase
+        public static string FullName { get; set; }  // Add this line
+        public static string Username { get; set; } //supabase
 
-        // Property to store the logged-in user's role (Admin or Staff)
-        public static string Role { get; set; } = null;
+        public static int MemberId { get; set; }
     }
 }

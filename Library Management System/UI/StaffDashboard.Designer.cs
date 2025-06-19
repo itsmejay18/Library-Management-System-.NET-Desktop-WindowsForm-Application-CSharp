@@ -39,14 +39,12 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
-            this.lblUser = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblWelcome = new System.Windows.Forms.Label();
             this.btnBorrowReturn = new System.Windows.Forms.Button();
             this.btnMembers = new System.Windows.Forms.Button();
             this.btnBooks = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.lblDateTime = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblExit = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -54,22 +52,27 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel6.SuspendLayout();
+            this.lblDateTime = new System.Windows.Forms.Label();
             this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 3);
+            this.label4.Location = new System.Drawing.Point(3, 6);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(319, 15);
+            this.label4.Size = new System.Drawing.Size(126, 15);
             this.label4.TabIndex = 3;
-            this.label4.Text = "BSIT-2C SY: 2024-2025 || Jay Ababon and Jericho Earl Martin";
+            this.label4.Text = "BSIT-2C SY: 2024-2025 ";
             // 
             // mainPanel
             // 
@@ -94,7 +97,6 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel6.Controls.Add(this.label4);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel6.Location = new System.Drawing.Point(286, 691);
@@ -162,27 +164,16 @@
             this.btnReports.UseVisualStyleBackColor = false;
             this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
-            // lblUser
+            // lblWelcome
             // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblUser.Location = new System.Drawing.Point(116, 21);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(41, 21);
-            this.lblUser.TabIndex = 5;
-            this.lblUser.Text = "Staff";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(23, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 21);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Welcome";
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblWelcome.Location = new System.Drawing.Point(23, 21);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(74, 21);
+            this.lblWelcome.TabIndex = 5;
+            this.lblWelcome.Text = "Welcome";
             // 
             // btnBorrowReturn
             // 
@@ -272,8 +263,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.Azure;
             this.panel5.Controls.Add(this.label3);
-            this.panel5.Controls.Add(this.lblUser);
-            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.lblWelcome);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel5.Location = new System.Drawing.Point(0, 0);
@@ -281,20 +271,10 @@
             this.panel5.Size = new System.Drawing.Size(286, 100);
             this.panel5.TabIndex = 6;
             // 
-            // lblDateTime
-            // 
-            this.lblDateTime.AutoSize = true;
-            this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateTime.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDateTime.Location = new System.Drawing.Point(1160, 58);
-            this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(74, 21);
-            this.lblDateTime.TabIndex = 5;
-            this.lblDateTime.Text = "Welcome";
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel4.Controls.Add(this.label4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel4.Location = new System.Drawing.Point(0, 591);
@@ -317,17 +297,17 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Azure;
-            this.panel3.Controls.Add(this.btnAuthPub);
             this.panel3.Controls.Add(this.panelSlide);
             this.panel3.Controls.Add(this.panel7);
-            this.panel3.Controls.Add(this.btnSettings);
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.btnAuthPub);
             this.panel3.Controls.Add(this.btnReports);
+            this.panel3.Controls.Add(this.btnSettings);
             this.panel3.Controls.Add(this.btnBorrowReturn);
             this.panel3.Controls.Add(this.btnMembers);
             this.panel3.Controls.Add(this.btnBooks);
             this.panel3.Controls.Add(this.btnDashboard);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.panel4);
             this.panel3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -370,6 +350,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1366, 100);
             this.panel1.TabIndex = 6;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
@@ -392,6 +373,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "LibraryHub";
             // 
+            // lblDateTime
+            // 
+            this.lblDateTime.AutoSize = true;
+            this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateTime.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblDateTime.Location = new System.Drawing.Point(1160, 58);
+            this.lblDateTime.Name = "lblDateTime";
+            this.lblDateTime.Size = new System.Drawing.Size(74, 21);
+            this.lblDateTime.TabIndex = 5;
+            this.lblDateTime.Text = "Welcome";
+            this.lblDateTime.Click += new System.EventHandler(this.lblDateTime_Click);
+            // 
             // StaffDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,10 +399,11 @@
             this.Name = "StaffDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StaffDashboard";
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
+            this.Load += new System.EventHandler(this.StaffDashboard_Load);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -429,14 +423,12 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnReports;
-        private System.Windows.Forms.Label lblUser;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Button btnBorrowReturn;
         private System.Windows.Forms.Button btnMembers;
         private System.Windows.Forms.Button btnBooks;
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label lblDateTime;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblExit;
         private System.Windows.Forms.Panel panel3;
@@ -444,5 +436,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnAuthPub;
+        private System.Windows.Forms.Label lblDateTime;
     }
 }

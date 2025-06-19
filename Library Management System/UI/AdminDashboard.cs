@@ -12,15 +12,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 
 namespace Library_Management_System.UI
 {
+   
     public partial class AdminDashboard : Form
     {
-        public AdminDashboard()
+
+        private readonly string displayName;
+        private readonly string userRole;
+        public AdminDashboard(string username)
         {
             InitializeComponent();
+            this.displayName = username;
+            this.userRole = CurrentSession.Role ?? "Guest";
+            lblWelcome.Text = $"Welcome, {displayName} ({userRole})!";
+
+
         }
+
+
+        private readonly string supabaseUrl = "https://mfvwlprqvbqqwhvpsxbr.supabase.co";
+        private readonly string anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1mdndscHJxdmJxcXdodnBzeGJyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYzNjMzNDAsImV4cCI6MjA2MTkzOTM0MH0.4KmpYTn08PeLbQwUmcHrvg2cDi35-cIjXA3jlp3CxDc";
+
+
         private void MovePanel(Control btn)
         {
             panelSlide.Top = btn.Top;
@@ -33,51 +51,50 @@ namespace Library_Management_System.UI
         readonly UserControlReports ucReport = new UserControlReports();
         readonly UserControlSettings ucSetting = new UserControlSettings();
         readonly UserControlAuthPub ucAuthPub = new UserControlAuthPub();
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            // 1. Start your timer (likely for updating time display somewhere)
             timer1.Start();
-            lblWelcome.Text = $"Welcome, {CurrentSession.Username}!"; // Example: Display username
-            //lblRole.Text = $"Role: {CurrentSession.Role}";            // Example: Display role
+
+            // 2. Set the welcome label text using the currently logged-in username from your session
+            lblWelcome.Text = $"Welcome, {displayName}!";
+
+
+            // 3. Clear any existing controls from your main panel before adding new content
+            mainPanel.Controls.Clear();
+
+            // 4. Add the UserControlDashboard (ucDash) as the default view on the main panel
+            mainPanel.Controls.Add(ucDash);
+
+            // 5. Move the sliding panel indicator to the Dashboard button
+            MovePanel(btnDashboard);
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
             MovePanel(btnDashboard);
             mainPanel.Controls.Clear();      // Clear existing controls in the panel
             mainPanel.Controls.Add(ucDash); // Add the user control to the panel
-            //ucDash.Dock = DockStyle.Fill;  // Make it fill the panel
-            //userControlBooks1.Hide();
-            //userControlDashboard1.Show();
-
+                                            //ucDash.Dock = DockStyle.Fill;  // Make it fill the panel
+                                            //userControlBooks1.Hide();
+                                            //userControlDashboard1.Show();
+            
         }
 
-        private void panel7_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
 
         private void btnBooks_Click(object sender, EventArgs e)
         {
             MovePanel(btnBooks);
             mainPanel.Controls.Clear();      // Clear existing controls in the panel
             mainPanel.Controls.Add(ucBook); // Add the user control to the panel
-            //ucBook.Dock = DockStyle.Fill;  // Make it fill the panel
-            //userControlDashboard1.Hide();
-            //userControlBooks1.Show();
+                                            //ucBook.Dock = DockStyle.Fill;  // Make it fill the panel
+                                            //userControlDashboard1.Hide();
+                                            //userControlBooks1.Show();
+            
         }
 
         private void btnMembers_Click(object sender, EventArgs e)
@@ -85,6 +102,7 @@ namespace Library_Management_System.UI
             MovePanel(btnMembers);
             mainPanel.Controls.Clear();      // Clear existing controls in the panel
             mainPanel.Controls.Add(ucMember); // Add the user control to the panel
+            
         }
 
         private void btnBorrowReturn_Click(object sender, EventArgs e)
@@ -92,17 +110,17 @@ namespace Library_Management_System.UI
             MovePanel(btnBorrowReturn);
             mainPanel.Controls.Clear();
             mainPanel.Controls.Add(ucBorrow);
+            
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-        }
+       
 
         private void btnReports_Click(object sender, EventArgs e)
         {
             MovePanel(btnReports);
             mainPanel.Controls.Clear();
             mainPanel.Controls.Add(ucReport);
+            
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -131,16 +149,69 @@ namespace Library_Management_System.UI
             lblDateTime.Text = DateTime.Now.ToString("dd-MMM-yyyy hh:mm:ss tt");
         }
 
-        private void userControlBooks1_Load(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void btnAuthPub_Click(object sender, EventArgs e)
         {
             MovePanel(btnAuthPub);
             mainPanel.Controls.Clear();
             mainPanel.Controls.Add(ucAuthPub);
+            
+        }
+
+        private void mainPanel_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        private void lblDateTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void userControlBooks1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        public interface IRefreshable
+        {
+            void Reload();
+        }
+
+        private void lblWelcome_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

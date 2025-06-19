@@ -18,7 +18,7 @@ namespace Library_Management_System.Usercontrol
             InitializeComponent();
         }
         private readonly int _bookId; // Book ID to identify which record to edit
-        private readonly string _connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        private readonly string _connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
 
         public FormEditBook(int bookId)
         {

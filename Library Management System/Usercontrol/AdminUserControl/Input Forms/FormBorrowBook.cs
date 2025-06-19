@@ -21,12 +21,14 @@ namespace Library_Management_System.UI
             LoadMembers();
             DisplayDueDate();
         }
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            // Optional: Your combo box logic here if needed
         }
+
         private void LoadBooks()
         {
             try
@@ -44,8 +46,8 @@ namespace Library_Management_System.UI
                             books.Add(new KeyValuePair<string, int>(reader["Title"].ToString(), Convert.ToInt32(reader["Book_Id"])));
                         }
                         cmbBooks.DataSource = books;
-                        cmbBooks.DisplayMember = "Key"; // Use the Title (Key) for display
-                        cmbBooks.ValueMember = "Value"; // Use Book_Id (Value) for selection
+                        cmbBooks.DisplayMember = "Key"; // Title
+                        cmbBooks.ValueMember = "Value"; // Book_Id
                     }
                 }
             }
@@ -54,6 +56,7 @@ namespace Library_Management_System.UI
                 MessageBox.Show($"Error loading books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void LoadMembers()
         {
             try
@@ -68,12 +71,11 @@ namespace Library_Management_System.UI
                         var members = new List<KeyValuePair<string, int>>();
                         while (reader.Read())
                         {
-                            // Add combined first and last name along with MemberId to the ComboBox data source
                             members.Add(new KeyValuePair<string, int>(reader["FullName"].ToString(), Convert.ToInt32(reader["Member_Id"])));
                         }
                         cmbMembers.DataSource = members;
-                        cmbMembers.DisplayMember = "Key"; // Use the FullName (Key) for display
-                        cmbMembers.ValueMember = "Value"; // Use the MemberId (Value) for selection
+                        cmbMembers.DisplayMember = "Key"; // FullName
+                        cmbMembers.ValueMember = "Value"; // Member_Id
                     }
                 }
             }
@@ -103,32 +105,55 @@ namespace Library_Management_System.UI
                 {
                     conn.Open();
 
-                    // Insert into Borrowers_tbl and retrieve the borrow_id
-                    string borrowQuery = @"
-            INSERT INTO Borrowers_tbl (Book_Id, Member_Id, Borrow_Date, Due_Date)
-            VALUES (@BookId, @MemberId, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY));
-            SELECT LAST_INSERT_ID();";
-                    MySqlCommand borrowCmd = new MySqlCommand(borrowQuery, conn);
-                    borrowCmd.Parameters.AddWithValue("@BookId", bookId);
-                    borrowCmd.Parameters.AddWithValue("@MemberId", memberId);
-                    int borrowId = Convert.ToInt32(borrowCmd.ExecuteScalar());
+                    // Optional: Start a transaction to ensure all or nothing
+                    using (var transaction = conn.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Insert into Borrowers_tbl and get borrow_id
+                            string borrowQuery = @"
+                                INSERT INTO Borrowers_tbl (Book_Id, Member_Id, Borrow_Date, Due_Date)
+                                VALUES (@BookId, @MemberId, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY));
+                                SELECT LAST_INSERT_ID();";
+                            MySqlCommand borrowCmd = new MySqlCommand(borrowQuery, conn, transaction);
+                            borrowCmd.Parameters.AddWithValue("@BookId", bookId);
+                            borrowCmd.Parameters.AddWithValue("@MemberId", memberId);
+                            int borrowId = Convert.ToInt32(borrowCmd.ExecuteScalar());
 
-                    // Insert initial dues record into dues_tbl using borrow_id
-                    string duesQuery = @"
-            INSERT INTO dues_tbl (Borrow_Id, Fine_amount, dues_status)
-            VALUES (@BorrowId, 0, 'Unpaid')";
-                    MySqlCommand duesCmd = new MySqlCommand(duesQuery, conn);
-                    duesCmd.Parameters.AddWithValue("@BorrowId", borrowId);
-                    duesCmd.ExecuteNonQuery();
+                            // Insert into transactions_tbl
+                            string transactionQuery = @"
+                                INSERT INTO transactions_tbl (borrower_id, transaction_date, transaction_status, fine)
+                                VALUES (@BorrowerId, NOW(), 'Borrowed', 0)";
+                            MySqlCommand transactionCmd = new MySqlCommand(transactionQuery, conn, transaction);
+                            transactionCmd.Parameters.AddWithValue("@BorrowerId", borrowId);
+                            transactionCmd.ExecuteNonQuery();
 
-                    // Update the book status to 'Borrowed'
-                    string updateBookQuery = "UPDATE Books_tbl SET book_Status = 'Borrowed' WHERE Book_Id = @BookId";
-                    MySqlCommand updateBookCmd = new MySqlCommand(updateBookQuery, conn);
-                    updateBookCmd.Parameters.AddWithValue("@BookId", bookId);
-                    updateBookCmd.ExecuteNonQuery();
+                            // Insert initial dues record
+                            string duesQuery = @"
+                                INSERT INTO dues_tbl (Borrow_Id, Fine_amount, dues_status)
+                                VALUES (@BorrowId, 0, 'Unpaid')";
+                            MySqlCommand duesCmd = new MySqlCommand(duesQuery, conn, transaction);
+                            duesCmd.Parameters.AddWithValue("@BorrowId", borrowId);
+                            duesCmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Book borrowed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                            // Update book status to 'Borrowed'
+                            string updateBookQuery = "UPDATE Books_tbl SET book_Status = 'Borrowed' WHERE Book_Id = @BookId";
+                            MySqlCommand updateBookCmd = new MySqlCommand(updateBookQuery, conn, transaction);
+                            updateBookCmd.Parameters.AddWithValue("@BookId", bookId);
+                            updateBookCmd.ExecuteNonQuery();
+
+                            // Commit transaction
+                            transaction.Commit();
+
+                            MessageBox.Show("Book borrowed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                        catch (Exception exTrans)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show($"Transaction failed: {exTrans.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -146,6 +171,11 @@ namespace Library_Management_System.UI
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FormBorrowBook_Load(object sender, EventArgs e)
+        {
+            // Optional: Any load logic
         }
     }
 }

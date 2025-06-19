@@ -53,13 +53,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtBookID = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.btnAddBook = new System.Windows.Forms.Button();
             this.btnEditBook = new System.Windows.Forms.Button();
+            this.filter = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -321,20 +321,10 @@
             // txtBookID
             // 
             this.txtBookID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBookID.Location = new System.Drawing.Point(463, 31);
+            this.txtBookID.Location = new System.Drawing.Point(190, 30);
             this.txtBookID.Name = "txtBookID";
-            this.txtBookID.Size = new System.Drawing.Size(146, 29);
+            this.txtBookID.Size = new System.Drawing.Size(278, 29);
             this.txtBookID.TabIndex = 24;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(319, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 21);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Search for Book ID";
             // 
             // label8
             // 
@@ -407,10 +397,27 @@
             this.btnEditBook.UseVisualStyleBackColor = false;
             this.btnEditBook.Click += new System.EventHandler(this.btnEditBook_Click);
             // 
+            // filter
+            // 
+            this.filter.FormattingEnabled = true;
+            this.filter.Items.AddRange(new object[] {
+            "Id",
+            "Title",
+            "Category",
+            "Genre",
+            "ISBN",
+            "Year Publish"});
+            this.filter.Location = new System.Drawing.Point(493, 30);
+            this.filter.Name = "filter";
+            this.filter.Size = new System.Drawing.Size(116, 29);
+            this.filter.TabIndex = 51;
+            this.filter.SelectedIndexChanged += new System.EventHandler(this.filter_SelectedIndexChanged);
+            // 
             // FindBookUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.filter);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.lblYear);
@@ -440,7 +447,6 @@
             this.Controls.Add(this.btnAddBook);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtBookID);
-            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FindBookUserControl";
@@ -478,7 +484,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtBookID;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label label10;
@@ -486,5 +491,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddBook;
         private System.Windows.Forms.Button btnEditBook;
+        private System.Windows.Forms.ComboBox filter;
     }
 }

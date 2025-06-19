@@ -33,7 +33,7 @@ namespace Library_Management_System.Usercontrol
         }
         private void AddMemberToDatabase()
         {
-            string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+            string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
 
             // Collect data from form inputs
             string firstName = txtFirstName.Text.Trim();
@@ -101,6 +101,36 @@ namespace Library_Management_System.Usercontrol
         }
 
         private void FormAddMember_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboMemberType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

@@ -18,7 +18,7 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
         {
             InitializeComponent();
         }
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
         private int bookId = -1;
 
         private void label29_Click(object sender, EventArgs e)
@@ -28,12 +28,40 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string searchBookId = txtBookID.Text.Trim(); // Avoid shadowing class-level bookId
+            string searchTerm = txtBookID.Text.Trim(); // User input
+            string selectedFilter = filter.SelectedItem?.ToString(); // ComboBox selection
 
-            if (string.IsNullOrEmpty(searchBookId))
+            if (string.IsNullOrEmpty(searchTerm) || string.IsNullOrEmpty(selectedFilter))
             {
-                MessageBox.Show("Please enter a Book ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter a search term and select a filter.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+
+            string column = "";
+
+            switch (selectedFilter)
+            {
+                case "Book ID":
+                    column = "b.book_id";
+                    break;
+                case "Title":
+                    column = "b.title";
+                    break;
+                case "Category":
+                    column = "b.category";
+                    break;
+                case "Genre":
+                    column = "b.genre";
+                    break;
+                case "ISBN":
+                    column = "b.ISBN";
+                    break;
+                case "Year Published":
+                    column = "b.year_published";
+                    break;
+                default:
+                    MessageBox.Show("Invalid filter selection.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
             }
 
             try
@@ -42,33 +70,32 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                 {
                     conn.Open();
 
-                    // Query for book details and join with the author_tbl
-                    string bookQuery = @"
-                    SELECT 
-                        b.book_id,
-                        b.title,
-                        b.category,
-                        b.genre,
-                        b.ISBN,
-                        b.year_published,
-                        b.book_status,
-                        a.author_name,
-                        b.description
-                    FROM books_tbl b
-                    LEFT JOIN authors_tbl a ON b.author_id = a.author_id
-                    WHERE b.book_id = @BookID";
+                    string bookQuery = $@"
+            SELECT 
+                b.book_id,
+                b.title,
+                b.category,
+                b.genre,
+                b.ISBN,
+                b.year_published,
+                b.book_status,
+                a.author_name,
+                b.description
+            FROM books_tbl b
+            LEFT JOIN authors_tbl a ON b.author_id = a.author_id
+            WHERE {column} LIKE @SearchTerm
+            LIMIT 1";
 
                     using (MySqlCommand bookCmd = new MySqlCommand(bookQuery, conn))
                     {
-                        bookCmd.Parameters.AddWithValue("@BookID", searchBookId);
+                        bookCmd.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm + "%");
 
                         using (MySqlDataReader reader = bookCmd.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                bookId = Convert.ToInt32(reader["book_id"]); // Assign bookId at the class level
+                                bookId = Convert.ToInt32(reader["book_id"]);
 
-                                // Populate Book Details
                                 lblTitle.Text = reader["title"].ToString();
                                 lblAuthor.Text = reader["author_name"].ToString();
                                 lblCategory.Text = reader["category"].ToString();
@@ -80,18 +107,18 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                             }
                             else
                             {
-                                MessageBox.Show("Book not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Book not found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 return;
                             }
                         }
                     }
 
-                    // Query for borrower details related to the book
+                    // Borrower details
                     string borrowerQuery = @"
-                    SELECT m.member_id, m.last_name, m.email, m.phone
-                    FROM members_tbl m
-                    JOIN borrowers_tbl b ON m.member_id = b.member_id
-                    WHERE b.book_id = @BookID AND b.return_date IS NULL";
+            SELECT m.member_id, m.last_name, m.email, m.phone
+            FROM members_tbl m
+            JOIN borrowers_tbl b ON m.member_id = b.member_id
+            WHERE b.book_id = @BookID AND b.return_date IS NULL";
 
                     using (MySqlCommand borrowerCmd = new MySqlCommand(borrowerQuery, conn))
                     {
@@ -101,7 +128,6 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                         {
                             if (borrowerReader.Read())
                             {
-                                // Populate Borrower Details
                                 lblStudentID.Text = borrowerReader["member_id"].ToString();
                                 lblStudentName.Text = borrowerReader["last_name"].ToString();
                                 lblEmail.Text = borrowerReader["email"].ToString();
@@ -109,7 +135,6 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                             }
                             else
                             {
-                                // Clear labels if no borrower found
                                 lblStudentID.Text = "Not Found";
                                 lblStudentName.Text = "Not Found";
                                 lblEmail.Text = "Not Found";
@@ -125,6 +150,7 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
             }
         }
 
+
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
@@ -132,7 +158,18 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
 
         private void FindBookUserControl_Load(object sender, EventArgs e)
         {
+            filter.Items.Clear();
+            filter.Items.AddRange(new string[]
+            {
+        "Book ID",
+        "Title",
+        "Category",
+        "Genre",
+        "ISBN",
+        "Year Published"
+            });
 
+            filter.SelectedIndex = 0;
         }
 
         private void btnAddBook_Click(object sender, EventArgs e)
@@ -153,6 +190,11 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
             {
                 MessageBox.Show("Please select a book to edit.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void filter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Library_Management_System.Class
             ReturnDate = null; // Will be assigned when the book is returned
             Fine = fine;
         }
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
         // Add a new transaction
         public void AddTransaction()
         {

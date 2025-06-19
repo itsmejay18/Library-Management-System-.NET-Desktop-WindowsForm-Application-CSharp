@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvMembers = new System.Windows.Forms.DataGridView();
             this.btnSearchMembers = new System.Windows.Forms.Button();
+            this.filter = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,7 +177,7 @@
             this.btnSearchMembers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchMembers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchMembers.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSearchMembers.Location = new System.Drawing.Point(217, 62);
+            this.btnSearchMembers.Location = new System.Drawing.Point(306, 56);
             this.btnSearchMembers.Name = "btnSearchMembers";
             this.btnSearchMembers.Size = new System.Drawing.Size(87, 26);
             this.btnSearchMembers.TabIndex = 8;
@@ -184,11 +185,23 @@
             this.btnSearchMembers.UseVisualStyleBackColor = false;
             this.btnSearchMembers.Click += new System.EventHandler(this.btnSearchMembers_Click);
             // 
+            // filter
+            // 
+            this.filter.FormattingEnabled = true;
+            this.filter.Items.AddRange(new object[] {
+            "Member ID",
+            "Full Name"});
+            this.filter.Location = new System.Drawing.Point(217, 64);
+            this.filter.Name = "filter";
+            this.filter.Size = new System.Drawing.Size(97, 21);
+            this.filter.TabIndex = 83;
+            // 
             // UserControlMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.Controls.Add(this.filter);
             this.Controls.Add(this.dgvMembers);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSearchMembers);
@@ -215,5 +228,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvMembers;
         private System.Windows.Forms.Button btnSearchMembers;
+        private System.Windows.Forms.ComboBox filter;
     }
 }

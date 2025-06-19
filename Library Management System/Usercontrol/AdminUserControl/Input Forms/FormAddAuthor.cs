@@ -17,7 +17,7 @@ namespace Library_Management_System.Usercontrol.AdminUserControl.Input_Forms
         {
             InitializeComponent();
         }
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
         private void AddAuthor()
         {
             string authorName = txtAuthor.Text.Trim();

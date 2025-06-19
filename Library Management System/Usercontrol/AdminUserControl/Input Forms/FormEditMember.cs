@@ -15,7 +15,7 @@ namespace Library_Management_System.Usercontrol
     public partial class FormEditMember : Form
     {
         private readonly int _memberId;
-        private readonly string _connectionString = "Server=localhost;Database=librarydb;uid=root;Pwd=martinjericho22@2002;";
+        private readonly string _connectionString = "Server=localhost;Database=librarydb;uid=root;Pwd=root;";
         public FormEditMember(int memberId)
         {
             InitializeComponent();

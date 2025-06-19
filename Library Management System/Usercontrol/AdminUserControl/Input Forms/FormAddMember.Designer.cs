@@ -80,6 +80,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(380, 29);
             this.txtEmail.TabIndex = 2;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // label6
             // 
@@ -109,6 +110,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(380, 29);
             this.txtFirstName.TabIndex = 0;
+            this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             // 
             // label3
             // 
@@ -162,7 +164,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(447, 100);
+            this.panel1.Size = new System.Drawing.Size(724, 100);
             this.panel1.TabIndex = 12;
             // 
             // txtPhone
@@ -171,6 +173,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(380, 29);
             this.txtPhone.TabIndex = 3;
+            this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
             // 
             // lblDate
             // 
@@ -198,6 +201,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(380, 29);
             this.txtLastName.TabIndex = 1;
+            this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
             // label8
             // 
@@ -221,12 +225,13 @@
             this.comboMemberType.Name = "comboMemberType";
             this.comboMemberType.Size = new System.Drawing.Size(169, 29);
             this.comboMemberType.TabIndex = 4;
+            this.comboMemberType.SelectedIndexChanged += new System.EventHandler(this.comboMemberType_SelectedIndexChanged);
             // 
             // FormAddMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 564);
+            this.ClientSize = new System.Drawing.Size(724, 564);
             this.Controls.Add(this.comboMemberType);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.txtPhone);

@@ -335,6 +335,7 @@
             this.dataGridViewBooks.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewBooks.Size = new System.Drawing.Size(707, 293);
             this.dataGridViewBooks.TabIndex = 0;
+            this.dataGridViewBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBooks_CellContentClick);
             this.dataGridViewBooks.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewBooks_ColumnHeaderMouseClick);
             // 
             // tabControlReports
@@ -507,6 +508,7 @@
             this.dgvBorrowers.RowsDefaultCellStyle = dataGridViewCellStyle28;
             this.dgvBorrowers.Size = new System.Drawing.Size(701, 287);
             this.dgvBorrowers.TabIndex = 2;
+            this.dgvBorrowers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBorrowers_CellContentClick);
             // 
             // UserControlReports
             // 

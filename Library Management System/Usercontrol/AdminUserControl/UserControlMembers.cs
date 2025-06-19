@@ -17,10 +17,19 @@ namespace Library_Management_System.Usercontrol
         public UserControlMembers()
         {
             InitializeComponent();
+
+            // Initialize filter ComboBox items
+            filter.Items.Clear();
+            filter.Items.Add("Member ID");
+            filter.Items.Add("Fullname");
+            filter.SelectedIndex = 1; // Default select Fullname
+
             LoadMembersData();
         }
-        private readonly string connectionString = "Server=localhost;Database=librarydb;uid=root;Pwd=martinjericho22@2002;";
-        private void LoadMembersData(string searchQuery = "")
+
+        private readonly string connectionString = "Server=localhost;Database=librarydb;uid=root;Pwd=root;";
+
+        private void LoadMembersData(string filterColumn = "", string searchQuery = "")
         {
             try
             {
@@ -52,21 +61,21 @@ namespace Library_Management_System.Usercontrol
                         Member_Status AS 'Status'
                     FROM Members_tbl";
 
-                    if (!string.IsNullOrEmpty(searchQuery))
+                    if (!string.IsNullOrEmpty(filterColumn) && !string.IsNullOrEmpty(searchQuery))
                     {
-                        query += @"
-                        WHERE Member_Id LIKE @Search
-                        OR First_Name LIKE @Search
-                        OR Last_Name LIKE @Search
-                        OR Email LIKE @Search
-                        OR Phone LIKE @Search
-                        OR Member_Type LIKE @Search
-                        OR Member_Status LIKE @Search";
+                        if (filterColumn == "Fullname")
+                        {
+                            query += " WHERE CONCAT(First_Name, ' ', Last_Name) LIKE @Search";
+                        }
+                        else
+                        {
+                            query += $" WHERE {filterColumn} LIKE @Search";
+                        }
                     }
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        if (!string.IsNullOrEmpty(searchQuery))
+                        if (!string.IsNullOrEmpty(filterColumn) && !string.IsNullOrEmpty(searchQuery))
                         {
                             cmd.Parameters.AddWithValue("@Search", $"%{searchQuery}%");
                         }
@@ -169,7 +178,6 @@ namespace Library_Management_System.Usercontrol
             }
         }
 
-
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -183,7 +191,28 @@ namespace Library_Management_System.Usercontrol
         private void btnSearchMembers_Click(object sender, EventArgs e)
         {
             string searchQuery = txtSearchMembers.Text.Trim();
-            LoadMembersData(searchQuery);
+            string filterColumn = "";
+
+            if (filter.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a filter.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            switch (filter.SelectedItem.ToString())
+            {
+                case "Member ID":
+                    filterColumn = "Member_Id";
+                    break;
+                case "Fullname":
+                    filterColumn = "Fullname"; // special case handled in LoadMembersData
+                    break;
+                default:
+                    filterColumn = "Fullname";
+                    break;
+            }
+
+            LoadMembersData(filterColumn, searchQuery);
         }
     }
 }

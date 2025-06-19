@@ -16,5 +16,10 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
         {
             InitializeComponent();
         }
+
+        private void FindIssueBookUserControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

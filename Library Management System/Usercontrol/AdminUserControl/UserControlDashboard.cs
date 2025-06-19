@@ -21,7 +21,7 @@ namespace Library_Management_System.Usercontrol
             LoadDashboardData();
         }
         // Connection string (replace with your actual connection string)
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
         private void LoadDashboardData()
         {
             try
@@ -60,5 +60,42 @@ namespace Library_Management_System.Usercontrol
                 return result != null ? Convert.ToInt32(result) : 0;
             }
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblOverdueBooks_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            // Assuming this UserControlDashboard is inside a Form or a Panel
+            var parent = this.Parent;
+
+            if (parent != null)
+            {
+                // Clear existing controls in the parent container
+                parent.Controls.Clear();
+
+                // Create instance of the UserControl you want to show, e.g. Displayill
+                var displayIllControl = new Library_Management_System.Borrower_UI.Displayill();
+
+                // Dock to fill the container (optional)
+                displayIllControl.Dock = DockStyle.Fill;
+
+                // Add the new UserControl to the parent container
+                parent.Controls.Add(displayIllControl);
+            }
+        }
+
     }
 }
