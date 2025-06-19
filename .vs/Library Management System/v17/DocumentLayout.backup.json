@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library-Management-System\\",
+  "WorkspaceRootPath": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|c:\\users\\jay jemino ababon\\source\\repos\\library-management-system\\library management system\\borrower ui\\displayill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|c:\\users\\jay jemino ababon\\source\\repos\\library management system\\library management system\\borrower ui\\displayill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\borrower ui\\displayill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library-Management-System\\library management system\\borrower ui\\displayill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\library management system\\borrower ui\\displayill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\borrower ui\\displayill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -36,11 +36,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Displayill.cs",
-              "DocumentMoniker": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library-Management-System\\Library Management System\\Borrower UI\\Displayill.cs",
+              "DocumentMoniker": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\Displayill.cs",
               "RelativeDocumentMoniker": "Library Management System\\Borrower UI\\Displayill.cs",
-              "ToolTip": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library-Management-System\\Library Management System\\Borrower UI\\Displayill.cs",
+              "ToolTip": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\Displayill.cs",
               "RelativeToolTip": "Library Management System\\Borrower UI\\Displayill.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAzwBEAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAmwAsAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-09T17:31:18.901Z",
               "EditorCaption": ""
@@ -49,10 +49,10 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Displayill.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library-Management-System\\Library Management System\\Borrower UI\\Displayill.cs",
+              "DocumentMoniker": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\Displayill.cs",
               "RelativeDocumentMoniker": "Library Management System\\Borrower UI\\Displayill.cs",
               "ToolTip": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library-Management-System\\Library Management System\\Borrower UI\\Displayill.cs [Design]",
-              "RelativeToolTip": "Library Management System\\Borrower UI\\Displayill.cs [Design]",
+              "RelativeToolTip": "..\\Library-Management-System\\Library Management System\\Borrower UI\\Displayill.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-09T17:30:21.248Z"
             }
