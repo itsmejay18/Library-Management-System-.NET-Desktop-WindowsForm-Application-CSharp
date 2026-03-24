@@ -3,12 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|c:\\users\\jay jemino ababon\\source\\repos\\library management system\\library management system\\borrower ui\\displayill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\borrower ui\\displayill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|c:\\users\\jay jemino ababon\\source\\repos\\library management system\\library management system\\ui\\borrowersdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\ui\\borrowersdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|c:\\users\\jay jemino ababon\\source\\repos\\library management system\\library management system\\ui\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\ui\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|c:\\users\\jay jemino ababon\\source\\repos\\library management system\\library management system\\borrower ui\\ucborrowreturn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\borrower ui\\ucborrowreturn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|c:\\users\\jay jemino ababon\\source\\repos\\library management system\\library management system\\borrower ui\\ucrequestinterloan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\borrower ui\\ucrequestinterloan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|c:\\users\\jay jemino ababon\\source\\repos\\library management system\\library management system\\borrower ui\\returnbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\borrower ui\\returnbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|c:\\users\\jay jemino ababon\\source\\repos\\library management system\\library management system\\borrower ui\\enterwhatyouremember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\borrower ui\\enterwhatyouremember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\library management system\\borrower ui\\displayill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\borrower ui\\displayill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|c:\\users\\jay jemino ababon\\source\\repos\\library management system\\library management system\\borrower ui\\borrowbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\borrower ui\\borrowbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|c:\\users\\jay jemino ababon\\source\\repos\\library management system\\library management system\\borrower ui\\displayill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1C3B96B-F870-4463-9F31-9F82AB2BFF78}|Library Management System\\Library Management System.csproj|solutionrelative:library management system\\borrower ui\\displayill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,26 +63,111 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "BorrowersDashboard.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\UI\\BorrowersDashboard.cs",
+              "RelativeDocumentMoniker": "Library Management System\\UI\\BorrowersDashboard.cs",
+              "ToolTip": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\UI\\BorrowersDashboard.cs [Design]",
+              "RelativeToolTip": "Library Management System\\UI\\BorrowersDashboard.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T18:26:28.285Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminDashboard.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\UI\\AdminDashboard.cs",
+              "RelativeDocumentMoniker": "Library Management System\\UI\\AdminDashboard.cs",
+              "ToolTip": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\UI\\AdminDashboard.cs [Design]",
+              "RelativeToolTip": "Library Management System\\UI\\AdminDashboard.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T18:26:17.097Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UCRequestInterloan.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\UCRequestInterloan.cs",
+              "RelativeDocumentMoniker": "Library Management System\\Borrower UI\\UCRequestInterloan.cs",
+              "ToolTip": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\UCRequestInterloan.cs [Design]",
+              "RelativeToolTip": "Library Management System\\Borrower UI\\UCRequestInterloan.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T18:26:09.266Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UCBorrowReturn.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\UCBorrowReturn.cs",
+              "RelativeDocumentMoniker": "Library Management System\\Borrower UI\\UCBorrowReturn.cs",
+              "ToolTip": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\UCBorrowReturn.cs [Design]",
+              "RelativeToolTip": "Library Management System\\Borrower UI\\UCBorrowReturn.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T18:26:06.968Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReturnBook.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\ReturnBook.cs",
+              "RelativeDocumentMoniker": "Library Management System\\Borrower UI\\ReturnBook.cs",
+              "ToolTip": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\ReturnBook.cs [Design]",
+              "RelativeToolTip": "Library Management System\\Borrower UI\\ReturnBook.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T18:26:04.046Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EnterwhatyouRemember.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\EnterwhatyouRemember.cs",
+              "RelativeDocumentMoniker": "Library Management System\\Borrower UI\\EnterwhatyouRemember.cs",
+              "ToolTip": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\EnterwhatyouRemember.cs [Design]",
+              "RelativeToolTip": "Library Management System\\Borrower UI\\EnterwhatyouRemember.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T18:26:02.905Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BorrowBook.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\BorrowBook.cs",
+              "RelativeDocumentMoniker": "Library Management System\\Borrower UI\\BorrowBook.cs",
+              "ToolTip": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\BorrowBook.cs [Design]",
+              "RelativeToolTip": "Library Management System\\Borrower UI\\BorrowBook.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-19T18:25:54.182Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Displayill.cs",
               "DocumentMoniker": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\Displayill.cs",
               "RelativeDocumentMoniker": "Library Management System\\Borrower UI\\Displayill.cs",
               "ToolTip": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\Displayill.cs",
               "RelativeToolTip": "Library Management System\\Borrower UI\\Displayill.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAmwAsAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-09T17:31:18.901Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Displayill.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\Displayill.cs",
               "RelativeDocumentMoniker": "Library Management System\\Borrower UI\\Displayill.cs",
-              "ToolTip": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library-Management-System\\Library Management System\\Borrower UI\\Displayill.cs [Design]",
-              "RelativeToolTip": "..\\Library-Management-System\\Library Management System\\Borrower UI\\Displayill.cs [Design]",
+              "ToolTip": "C:\\Users\\Jay Jemino Ababon\\source\\repos\\Library Management System\\Library Management System\\Borrower UI\\Displayill.cs [Design]",
+              "RelativeToolTip": "Library Management System\\Borrower UI\\Displayill.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T17:30:21.248Z"
+              "WhenOpened": "2025-06-09T17:30:21.248Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
