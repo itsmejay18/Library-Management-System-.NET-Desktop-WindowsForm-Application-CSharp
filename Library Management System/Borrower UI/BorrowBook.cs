@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library_Management_System.Class;
 using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 
 namespace Library_Management_System.Borrower_UI
@@ -26,8 +24,6 @@ namespace Library_Management_System.Borrower_UI
         }
 
         private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
-        private readonly string supabaseUrl = "https://mfvwlprqvbqqwhvpsxbr.supabase.co";
-        private readonly string anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1mdndscHJxdmJxcXdodnBzeGJyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYzNjMzNDAsImV4cCI6MjA2MTkzOTM0MH0.4KmpYTn08PeLbQwUmcHrvg2cDi35-cIjXA3jlp3CxDc";
 
         private void BorrowBook_Load(object sender, EventArgs e) { }
 

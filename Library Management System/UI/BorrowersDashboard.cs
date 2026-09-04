@@ -5,9 +5,6 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Library_Management_System.UI
 {
@@ -15,9 +12,6 @@ namespace Library_Management_System.UI
     {
         private string displayName;
         private string userRole;
-
-        private readonly string supabaseUrl = "https://mfvwlprqvbqqwhvpsxbr.supabase.co";
-        private readonly string anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1mdndscHJxdmJxcXdodnBzeGJyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYzNjMzNDAsImV4cCI6MjA2MTkzOTM0MH0.4KmpYTn08PeLbQwUmcHrvg2cDi35-cIjXA3jlp3CxDc";
 
         // User controls
         readonly UCBorrowReturn ucBorrow = new UCBorrowReturn();

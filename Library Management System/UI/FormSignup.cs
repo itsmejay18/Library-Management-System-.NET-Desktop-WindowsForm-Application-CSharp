@@ -1,12 +1,11 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,10 +18,19 @@ namespace Library_Management_System.UI
         {
             InitializeComponent();
         }
-        private readonly string supabaseUrl = "https://nagljyrvhjkbxtjavfca.supabase.co";
-        private readonly string anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5hZ2xqeXJ2aGprYnh0amF2ZmNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3NzI0MTgsImV4cCI6MjEwMzM0ODQxOH0.k7vnbm-mgaQ7tCsRmWK-2hY1CTevnQh9jiGipHWI0rQ"; 
 
-        private async void btnSignup_Click(object sender, EventArgs e)
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
+
+        private string ComputeSha256(string input)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+                return BitConverter.ToString(bytes).Replace("-", "").ToLowerInvariant();
+            }
+        }
+
+        private void btnSignup_Click(object sender, EventArgs e)
         {
             string fullName = txtNewFullname.Text.Trim();
             string email = txtNewEmail.Text.Trim();
@@ -32,7 +40,6 @@ namespace Library_Management_System.UI
                                   rbtnStaff.Checked ? "Staff" :
                                   rbtnStudent.Checked ? "Student" : "";
 
-            // Input Validation
             if (string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(email) ||
                 string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
             {
@@ -60,74 +67,35 @@ namespace Library_Management_System.UI
 
             try
             {
-                using (HttpClient client = new HttpClient())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
-                    client.DefaultRequestHeaders.Add("apikey", anonKey);
-                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {anonKey}");
+                    conn.Open();
 
-                    // Step 1: Sign up the user with metadata
-                    var signupPayload = new
+                    string checkQuery = "SELECT COUNT(*) FROM users_tbl WHERE username = @email";
+                    using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn))
                     {
-                        email = email,
-                        password = password,
-                        data = new
+                        checkCmd.Parameters.AddWithValue("@email", email);
+                        long exists = (long)checkCmd.ExecuteScalar();
+                        if (exists > 0)
                         {
-                            full_name = fullName,
-                            role = selectedRole
+                            MessageBox.Show("An account with this email already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
-                    };
-
-                    var signupJson = JsonConvert.SerializeObject(signupPayload);
-                    var signupContent = new StringContent(signupJson, Encoding.UTF8, "application/json");
-
-                    var signupResponse = await client.PostAsync($"{supabaseUrl}/auth/v1/signup", signupContent);
-                    var signupResult = await signupResponse.Content.ReadAsStringAsync();
-
-                    if (!signupResponse.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show($"Signup failed: {signupResult}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
                     }
 
-                    // Step 2: Get User ID
-                    var signupData = JObject.Parse(signupResult);
-                    string userId = signupData["user"]?["id"]?.ToString();
-
-                    if (string.IsNullOrEmpty(userId))
+                    string insertQuery = "INSERT INTO users_tbl (username, full_name, email, password, role) VALUES (@username, @fullname, @email, @password, @role)";
+                    using (MySqlCommand cmd = new MySqlCommand(insertQuery, conn))
                     {
-                        userId = signupData["id"]?.ToString();
+                        cmd.Parameters.AddWithValue("@username", email);
+                        cmd.Parameters.AddWithValue("@fullname", fullName);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@password", ComputeSha256(password));
+                        cmd.Parameters.AddWithValue("@role", selectedRole);
+                        cmd.ExecuteNonQuery();
                     }
 
-                    if (string.IsNullOrEmpty(userId))
-                    {
-                        MessageBox.Show("Failed to retrieve user ID. Email confirmation may be required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    // Step 3: Insert into profiles table
-                    var profilePayload = new
-                    {
-                        id = userId,
-                        full_name = fullName,
-                        email = email,
-                        role = selectedRole
-                    };
-
-                    var profileJson = JsonConvert.SerializeObject(profilePayload);
-                    var profileContent = new StringContent(profileJson, Encoding.UTF8, "application/json");
-
-                    var profileResponse = await client.PostAsync($"{supabaseUrl}/rest/v1/profiles", profileContent);
-
-                    if (profileResponse.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show($"Account created successfully for {selectedRole}!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
-                    }
-                    else
-                    {
-                        var profileResult = await profileResponse.Content.ReadAsStringAsync();
-                        MessageBox.Show($"Failed to create profile: {profileResult}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show($"Account created successfully for {selectedRole}!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
             }
             catch (Exception ex)

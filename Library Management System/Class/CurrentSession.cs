@@ -8,10 +8,10 @@ namespace Library_Management_System.Class
 {
     internal class CurrentSession
     {
-        public static string Email { get; set; } //supabase
-        public static string Role { get; set; } //supabase
-        public static string FullName { get; set; }  // Add this line
-        public static string Username { get; set; } //supabase
+        public static string Email { get; set; }
+        public static string Role { get; set; }
+        public static string FullName { get; set; }
+        public static string Username { get; set; }
 
         public static int MemberId { get; set; }
     }
