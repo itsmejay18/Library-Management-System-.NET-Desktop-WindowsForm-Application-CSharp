@@ -24,8 +24,8 @@ namespace Library_Management_System
             InitializeComponent();
         }
 
-        private readonly string supabaseUrl = "https://mfvwlprqvbqqwhvpsxbr.supabase.co";
-        private readonly string anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1mdndscHJxdmJxcXdodnBzeGJyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDYzNjMzNDAsImV4cCI6MjA2MTkzOTM0MH0.4KmpYTn08PeLbQwUmcHrvg2cDi35-cIjXA3jlp3CxDc";
+        private readonly string supabaseUrl = "https://nagljyrvhjkbxtjavfca.supabase.co";
+        private readonly string anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5hZ2xqeXJ2aGprYnh0amF2ZmNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3NzI0MTgsImV4cCI6MjEwMzM0ODQxOH0.k7vnbm-mgaQ7tCsRmWK-2hY1CTevnQh9jiGipHWI0rQ";
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
