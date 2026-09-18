@@ -33,6 +33,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Static\Icons\Logo.png" />
+    <EmbeddedResource Include="Static\Icons\user.png" />
+    <EmbeddedResource Include="Static\Icons\close_icon-icons.com_50420.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Logo.ico" />
   </ItemGroup>
 

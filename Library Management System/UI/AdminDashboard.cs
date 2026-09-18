@@ -35,6 +35,25 @@ namespace Library_Management_System.UI
         {
             panelSlide.Top = btn.Top;
             panelSlide.Height = btn.Height;
+
+            // Reset all nav buttons to the inactive style
+            foreach (Control c in panel3.Controls)
+            {
+                if (c is Button && c != lblExit)
+                {
+                    ((Button)c).BackColor = System.Drawing.Color.White;
+                    ((Button)c).ForeColor = System.Drawing.Color.FromArgb(26, 43, 70);
+                    ((Button)c).Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular);
+                }
+            }
+
+            // Highlight the selected button
+            if (btn is Button active)
+            {
+                active.BackColor = System.Drawing.Color.FromArgb(238, 243, 251);
+                active.ForeColor = System.Drawing.Color.FromArgb(47, 107, 216);
+                active.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            }
         }
         readonly UserControlDashboard ucDash = new UserControlDashboard();
         readonly UserControlBooks ucBook = new UserControlBooks();
@@ -163,7 +182,15 @@ namespace Library_Management_System.UI
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            
+            using (System.Drawing.Drawing2D.LinearGradientBrush brush =
+                new System.Drawing.Drawing2D.LinearGradientBrush(
+                    panel1.ClientRectangle,
+                    System.Drawing.Color.FromArgb(36, 64, 107),
+                    System.Drawing.Color.FromArgb(22, 50, 92),
+                    System.Drawing.Drawing2D.LinearGradientMode.Horizontal))
+            {
+                e.Graphics.FillRectangle(brush, panel1.ClientRectangle);
+            }
         }
 
         private void userControlBooks1_Load(object sender, EventArgs e)

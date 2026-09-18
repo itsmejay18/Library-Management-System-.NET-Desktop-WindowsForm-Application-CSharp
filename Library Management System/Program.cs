@@ -18,7 +18,8 @@ namespace Library_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());
+            //Application.Run(new FormLogin());
+            Application.Run(new AdminDashboard("Admin"));
             //Application.Run(new BorrowersDashboard());
             //Application.Run(new AdminDashboard());
             //Application.Run(new StaffDashboard());
