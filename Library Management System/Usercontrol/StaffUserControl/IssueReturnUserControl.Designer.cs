@@ -59,13 +59,14 @@
             // 
             // btnReturn
             // 
-            this.btnReturn.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(107)))), ((int)(((byte)(216)))));
+            this.btnReturn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(88)))), ((int)(((byte)(180)))));
             this.btnReturn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnReturn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReturn.FlatAppearance.BorderSize = 0;
             this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReturn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnReturn.ForeColor = System.Drawing.Color.White;
             this.btnReturn.Location = new System.Drawing.Point(327, 219);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(128, 29);
@@ -76,13 +77,14 @@
             // 
             // btnBorrow
             // 
-            this.btnBorrow.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnBorrow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(107)))), ((int)(((byte)(216)))));
+            this.btnBorrow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(88)))), ((int)(((byte)(180)))));
             this.btnBorrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnBorrow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBorrow.FlatAppearance.BorderSize = 0;
             this.btnBorrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBorrow.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBorrow.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnBorrow.ForeColor = System.Drawing.Color.White;
             this.btnBorrow.Location = new System.Drawing.Point(193, 219);
             this.btnBorrow.Name = "btnBorrow";
             this.btnBorrow.Size = new System.Drawing.Size(128, 29);

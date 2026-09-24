@@ -40,6 +40,8 @@ namespace Library_Management_System.UI
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelSideBorder = new System.Windows.Forms.Panel();
             this.panelSlide = new System.Windows.Forms.Panel();
+            this.panelLogoutSep = new System.Windows.Forms.Panel();
+            this.panelMenuAccent = new System.Windows.Forms.Panel();
             this.btnAuthPub = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
@@ -47,10 +49,12 @@ namespace Library_Management_System.UI
             this.btnMembers = new System.Windows.Forms.Button();
             this.btnBooks = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
+            this.btnToggle = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
+            this.labelRole = new System.Windows.Forms.Label();
             this.panel5Line = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -160,6 +164,8 @@ namespace Library_Management_System.UI
             this.panel3.Controls.Add(this.panel7);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.panelLogoutSep);
+            this.panel3.Controls.Add(this.panelMenuAccent);
             this.panel3.Controls.Add(this.btnDashboard);
             this.panel3.Controls.Add(this.btnBooks);
             this.panel3.Controls.Add(this.btnMembers);
@@ -188,9 +194,9 @@ namespace Library_Management_System.UI
             // panelSlide
             // 
             this.panelSlide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(107)))), ((int)(((byte)(216)))));
-            this.panelSlide.Location = new System.Drawing.Point(0, 110);
+            this.panelSlide.Location = new System.Drawing.Point(0, 116);
             this.panelSlide.Name = "panelSlide";
-            this.panelSlide.Size = new System.Drawing.Size(6, 64);
+            this.panelSlide.Size = new System.Drawing.Size(6, 56);
             this.panelSlide.TabIndex = 6;
             // 
             // btnAuthPub
@@ -205,10 +211,11 @@ namespace Library_Management_System.UI
             this.btnAuthPub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
             this.btnAuthPub.Image = ((System.Drawing.Image)(resources.GetObject("btnAuthPub.Image")));
             this.btnAuthPub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAuthPub.Location = new System.Drawing.Point(6, 366);
+            this.btnAuthPub.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAuthPub.Location = new System.Drawing.Point(6, 364);
             this.btnAuthPub.Name = "btnAuthPub";
             this.btnAuthPub.Padding = new System.Windows.Forms.Padding(24, 0, 0, 0);
-            this.btnAuthPub.Size = new System.Drawing.Size(276, 64);
+            this.btnAuthPub.Size = new System.Drawing.Size(276, 56);
             this.btnAuthPub.TabIndex = 8;
             this.btnAuthPub.Text = "Authors/Publishers";
             this.btnAuthPub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -227,10 +234,11 @@ namespace Library_Management_System.UI
             this.btnReports.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
             this.btnReports.Image = ((System.Drawing.Image)(resources.GetObject("btnReports.Image")));
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(6, 430);
+            this.btnReports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReports.Location = new System.Drawing.Point(6, 426);
             this.btnReports.Name = "btnReports";
             this.btnReports.Padding = new System.Windows.Forms.Padding(24, 0, 0, 0);
-            this.btnReports.Size = new System.Drawing.Size(276, 64);
+            this.btnReports.Size = new System.Drawing.Size(276, 56);
             this.btnReports.TabIndex = 6;
             this.btnReports.Text = "Reports";
             this.btnReports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -249,10 +257,11 @@ namespace Library_Management_System.UI
             this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
             this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.Location = new System.Drawing.Point(6, 494);
+            this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSettings.Location = new System.Drawing.Point(6, 488);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Padding = new System.Windows.Forms.Padding(24, 0, 0, 0);
-            this.btnSettings.Size = new System.Drawing.Size(276, 64);
+            this.btnSettings.Size = new System.Drawing.Size(276, 56);
             this.btnSettings.TabIndex = 6;
             this.btnSettings.Text = "Logout";
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -271,10 +280,11 @@ namespace Library_Management_System.UI
             this.btnBorrowReturn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
             this.btnBorrowReturn.Image = ((System.Drawing.Image)(resources.GetObject("btnBorrowReturn.Image")));
             this.btnBorrowReturn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBorrowReturn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBorrowReturn.Location = new System.Drawing.Point(6, 302);
             this.btnBorrowReturn.Name = "btnBorrowReturn";
             this.btnBorrowReturn.Padding = new System.Windows.Forms.Padding(24, 0, 0, 0);
-            this.btnBorrowReturn.Size = new System.Drawing.Size(276, 64);
+            this.btnBorrowReturn.Size = new System.Drawing.Size(276, 56);
             this.btnBorrowReturn.TabIndex = 6;
             this.btnBorrowReturn.Text = "Borrow/Return";
             this.btnBorrowReturn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -293,10 +303,11 @@ namespace Library_Management_System.UI
             this.btnMembers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
             this.btnMembers.Image = ((System.Drawing.Image)(resources.GetObject("btnMembers.Image")));
             this.btnMembers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMembers.Location = new System.Drawing.Point(6, 238);
+            this.btnMembers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMembers.Location = new System.Drawing.Point(6, 240);
             this.btnMembers.Name = "btnMembers";
             this.btnMembers.Padding = new System.Windows.Forms.Padding(24, 0, 0, 0);
-            this.btnMembers.Size = new System.Drawing.Size(276, 64);
+            this.btnMembers.Size = new System.Drawing.Size(276, 56);
             this.btnMembers.TabIndex = 6;
             this.btnMembers.Text = "Members";
             this.btnMembers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -315,10 +326,11 @@ namespace Library_Management_System.UI
             this.btnBooks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
             this.btnBooks.Image = ((System.Drawing.Image)(resources.GetObject("btnBooks.Image")));
             this.btnBooks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBooks.Location = new System.Drawing.Point(6, 174);
+            this.btnBooks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBooks.Location = new System.Drawing.Point(6, 178);
             this.btnBooks.Name = "btnBooks";
             this.btnBooks.Padding = new System.Windows.Forms.Padding(24, 0, 0, 0);
-            this.btnBooks.Size = new System.Drawing.Size(276, 64);
+            this.btnBooks.Size = new System.Drawing.Size(276, 56);
             this.btnBooks.TabIndex = 6;
             this.btnBooks.Text = "Books";
             this.btnBooks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -337,10 +349,11 @@ namespace Library_Management_System.UI
             this.btnDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
             this.btnDashboard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashboard.Image")));
             this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashboard.Location = new System.Drawing.Point(6, 110);
+            this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDashboard.Location = new System.Drawing.Point(6, 116);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Padding = new System.Windows.Forms.Padding(24, 0, 0, 0);
-            this.btnDashboard.Size = new System.Drawing.Size(276, 64);
+            this.btnDashboard.Size = new System.Drawing.Size(276, 56);
             this.btnDashboard.TabIndex = 6;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -359,10 +372,12 @@ namespace Library_Management_System.UI
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
             this.panel5.Controls.Add(this.panel5Line);
+            this.panel5.Controls.Add(this.labelRole);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Controls.Add(this.lblWelcome);
+            this.panel5.Controls.Add(this.btnToggle);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel5.Location = new System.Drawing.Point(0, 0);
@@ -376,7 +391,7 @@ namespace Library_Management_System.UI
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(166)))), ((int)(((byte)(200)))));
-            this.label3.Location = new System.Drawing.Point(24, 64);
+            this.label3.Location = new System.Drawing.Point(28, 74);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 15);
             this.label3.TabIndex = 5;
@@ -385,14 +400,43 @@ namespace Library_Management_System.UI
             // lblWelcome
             // 
             this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWelcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
-            this.lblWelcome.Location = new System.Drawing.Point(22, 28);
+            this.lblWelcome.Location = new System.Drawing.Point(24, 18);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(93, 23);
+            this.lblWelcome.Size = new System.Drawing.Size(93, 20);
             this.lblWelcome.TabIndex = 5;
             this.lblWelcome.Text = "Welcome...";
             this.lblWelcome.Click += new System.EventHandler(this.lblWelcome_Click);
+            // 
+            // btnToggle
+            // 
+            this.btnToggle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(251)))));
+            this.btnToggle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnToggle.FlatAppearance.BorderSize = 0;
+            this.btnToggle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(243)))), ((int)(((byte)(251)))));
+            this.btnToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnToggle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToggle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
+            this.btnToggle.Location = new System.Drawing.Point(236, 26);
+            this.btnToggle.Name = "btnToggle";
+            this.btnToggle.Size = new System.Drawing.Size(36, 34);
+            this.btnToggle.TabIndex = 15;
+            this.btnToggle.Text = "☰";
+            this.btnToggle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnToggle.UseVisualStyleBackColor = false;
+            this.btnToggle.Click += new System.EventHandler(this.btnToggle_Click);
+            // 
+            // labelRole
+            // 
+            this.labelRole.AutoSize = true;
+            this.labelRole.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(122)))), ((int)(((byte)(144)))));
+            this.labelRole.Location = new System.Drawing.Point(24, 44);
+            this.labelRole.Name = "labelRole";
+            this.labelRole.Size = new System.Drawing.Size(66, 15);
+            this.labelRole.TabIndex = 12;
+            this.labelRole.Text = "Role";
             // 
             // panel5Line
             // 
@@ -401,6 +445,22 @@ namespace Library_Management_System.UI
             this.panel5Line.Name = "panel5Line";
             this.panel5Line.Size = new System.Drawing.Size(286, 2);
             this.panel5Line.TabIndex = 10;
+            // 
+            // panelLogoutSep
+            // 
+            this.panelLogoutSep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(233)))), ((int)(((byte)(243)))));
+            this.panelLogoutSep.Location = new System.Drawing.Point(0, 484);
+            this.panelLogoutSep.Name = "panelLogoutSep";
+            this.panelLogoutSep.Size = new System.Drawing.Size(286, 1);
+            this.panelLogoutSep.TabIndex = 13;
+            // 
+            // panelMenuAccent
+            // 
+            this.panelMenuAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(107)))), ((int)(((byte)(216)))));
+            this.panelMenuAccent.Location = new System.Drawing.Point(12, 78);
+            this.panelMenuAccent.Name = "panelMenuAccent";
+            this.panelMenuAccent.Size = new System.Drawing.Size(4, 14);
+            this.panelMenuAccent.TabIndex = 14;
             // 
             // panel4
             // 
@@ -517,7 +577,11 @@ namespace Library_Management_System.UI
         private System.Windows.Forms.Panel panelHeaderLine;
         private System.Windows.Forms.Label labelSub;
         private System.Windows.Forms.Panel panel5Line;
+        private System.Windows.Forms.Label labelRole;
+        private System.Windows.Forms.Panel panelLogoutSep;
+        private System.Windows.Forms.Panel panelMenuAccent;
         private System.Windows.Forms.Panel panelSideBorder;
+        private System.Windows.Forms.Button btnToggle;
         private System.Windows.Forms.Panel panel6Line;
     }
 }

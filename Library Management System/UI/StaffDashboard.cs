@@ -55,6 +55,25 @@ namespace Library_Management_System.UI
         {
             panelSlide.Top = btn.Top;
             panelSlide.Height = btn.Height;
+
+            // Reset all nav buttons to the inactive style
+            foreach (Control c in panel3.Controls)
+            {
+                if (c is Button && c != lblExit)
+                {
+                    ((Button)c).BackColor = System.Drawing.Color.White;
+                    ((Button)c).ForeColor = System.Drawing.Color.FromArgb(26, 43, 70);
+                    ((Button)c).Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular);
+                }
+            }
+
+            // Highlight the selected button
+            if (btn is Button active)
+            {
+                active.BackColor = System.Drawing.Color.FromArgb(238, 243, 251);
+                active.ForeColor = System.Drawing.Color.FromArgb(47, 107, 216);
+                active.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            }
         }
 
         private void lblExit_Click(object sender, EventArgs e)

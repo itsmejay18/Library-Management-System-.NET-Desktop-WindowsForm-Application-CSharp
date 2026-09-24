@@ -82,13 +82,14 @@
             // 
             // btnRequest
             // 
-            this.btnRequest.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(107)))), ((int)(((byte)(216)))));
+            this.btnRequest.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(88)))), ((int)(((byte)(180)))));
             this.btnRequest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnRequest.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRequest.FlatAppearance.BorderSize = 0;
             this.btnRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRequest.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRequest.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnRequest.ForeColor = System.Drawing.Color.White;
             this.btnRequest.Location = new System.Drawing.Point(309, 310);
             this.btnRequest.Name = "btnRequest";
             this.btnRequest.Size = new System.Drawing.Size(76, 33);

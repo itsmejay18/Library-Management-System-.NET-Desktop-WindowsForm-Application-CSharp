@@ -51,7 +51,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
             this.label1.Location = new System.Drawing.Point(71, 38);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
@@ -62,6 +63,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
             this.label2.Location = new System.Drawing.Point(159, 315);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 21);
@@ -72,6 +75,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
             this.label3.Location = new System.Drawing.Point(336, 315);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(156, 21);
@@ -82,6 +87,8 @@
             // lblTotalBooks
             // 
             this.lblTotalBooks.AutoSize = true;
+            this.lblTotalBooks.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalBooks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(107)))), ((int)(((byte)(216)))));
             this.lblTotalBooks.Location = new System.Drawing.Point(193, 336);
             this.lblTotalBooks.Name = "lblTotalBooks";
             this.lblTotalBooks.Size = new System.Drawing.Size(17, 21);
@@ -91,6 +98,8 @@
             // lblTotalMembers
             // 
             this.lblTotalMembers.AutoSize = true;
+            this.lblTotalMembers.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalMembers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(107)))), ((int)(((byte)(216)))));
             this.lblTotalMembers.Location = new System.Drawing.Point(403, 336);
             this.lblTotalMembers.Name = "lblTotalMembers";
             this.lblTotalMembers.Size = new System.Drawing.Size(17, 21);
@@ -100,6 +109,8 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
             this.label6.Location = new System.Drawing.Point(549, 315);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(193, 21);
@@ -109,6 +120,8 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(43)))), ((int)(((byte)(70)))));
             this.label7.Location = new System.Drawing.Point(806, 315);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(177, 21);
@@ -118,6 +131,8 @@
             // lblBorrowedBooks
             // 
             this.lblBorrowedBooks.AutoSize = true;
+            this.lblBorrowedBooks.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBorrowedBooks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(107)))), ((int)(((byte)(216)))));
             this.lblBorrowedBooks.Location = new System.Drawing.Point(638, 336);
             this.lblBorrowedBooks.Name = "lblBorrowedBooks";
             this.lblBorrowedBooks.Size = new System.Drawing.Size(17, 21);
@@ -127,6 +142,8 @@
             // lblOverdueBooks
             // 
             this.lblOverdueBooks.AutoSize = true;
+            this.lblOverdueBooks.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOverdueBooks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(107)))), ((int)(((byte)(216)))));
             this.lblOverdueBooks.Location = new System.Drawing.Point(888, 336);
             this.lblOverdueBooks.Name = "lblOverdueBooks";
             this.lblOverdueBooks.Size = new System.Drawing.Size(17, 21);

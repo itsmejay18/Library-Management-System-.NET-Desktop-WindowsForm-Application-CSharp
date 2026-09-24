@@ -62,6 +62,80 @@ namespace Library_Management_System.UI
         readonly UserControlReports ucReport = new UserControlReports();
         readonly UserControlSettings ucSetting = new UserControlSettings();
         readonly UserControlAuthPub ucAuthPub = new UserControlAuthPub();
+
+        private bool sidebarCollapsed = false;
+        private readonly Dictionary<string, string> navTextStore = new Dictionary<string, string>();
+
+        private void btnToggle_Click(object sender, EventArgs e)
+        {
+            sidebarCollapsed = !sidebarCollapsed;
+            ToggleSidebar();
+        }
+
+        private void ToggleSidebar()
+        {
+            int w = sidebarCollapsed ? 82 : 286;
+
+            panel3.Width = w;
+
+            // Content area follows the sidebar width
+            mainPanel.Location = new System.Drawing.Point(w, 100);
+            mainPanel.Width = 1366 - w;
+            panel6.Location = new System.Drawing.Point(w, 691);
+            panel6.Width = 1366 - w;
+
+            // Profile header elements
+            lblWelcome.Visible = !sidebarCollapsed;
+            labelRole.Visible = !sidebarCollapsed;
+            label3.Visible = !sidebarCollapsed;
+            panelMenuAccent.Visible = !sidebarCollapsed;
+            label4.Visible = !sidebarCollapsed;
+            btnToggle.Location = sidebarCollapsed ? new System.Drawing.Point(25, 26) : new System.Drawing.Point(236, 26);
+            panel5Line.Width = w;
+            panelLogoutSep.Width = sidebarCollapsed ? 70 : 286;
+
+            // Nav buttons: icon-rail when collapsed, full text when expanded
+            foreach (Control c in panel3.Controls)
+            {
+                if (!(c is Button b)) continue;
+
+                if (sidebarCollapsed)
+                {
+                    if (!navTextStore.ContainsKey(b.Name)) navTextStore[b.Name] = b.Text;
+                    b.Text = "";
+                    b.Padding = new System.Windows.Forms.Padding(0);
+                    b.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                    b.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+                    b.Width = 70;
+                }
+                else
+                {
+                    if (navTextStore.ContainsKey(b.Name)) b.Text = navTextStore[b.Name];
+                    b.Padding = new System.Windows.Forms.Padding(24, 0, 0, 0);
+                    b.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+                    b.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+                    b.Width = 276;
+                }
+            }
+
+            // Re-apply the active highlight on the current page button
+            foreach (Control c in panel3.Controls)
+            {
+                if (c is Button active && active.BackColor == System.Drawing.Color.FromArgb(238, 243, 251))
+                {
+                    active.BackColor = System.Drawing.Color.FromArgb(238, 243, 251);
+                    active.ForeColor = System.Drawing.Color.FromArgb(47, 107, 216);
+                    active.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+                }
+            }
+        }
+
+        private void LoadControl(UserControl uc)
+        {
+            mainPanel.Controls.Clear();
+            uc.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(uc);
+        }
         
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -71,13 +145,14 @@ namespace Library_Management_System.UI
 
             // 2. Set the welcome label text using the currently logged-in username from your session
             lblWelcome.Text = $"Welcome, {displayName}!";
+            labelRole.Text = userRole;
 
 
             // 3. Clear any existing controls from your main panel before adding new content
             mainPanel.Controls.Clear();
 
             // 4. Add the UserControlDashboard (ucDash) as the default view on the main panel
-            mainPanel.Controls.Add(ucDash);
+            LoadControl(ucDash);
 
             // 5. Move the sliding panel indicator to the Dashboard button
             MovePanel(btnDashboard);
@@ -87,12 +162,7 @@ namespace Library_Management_System.UI
         private void button1_Click(object sender, EventArgs e)
         {
             MovePanel(btnDashboard);
-            mainPanel.Controls.Clear();      // Clear existing controls in the panel
-            mainPanel.Controls.Add(ucDash); // Add the user control to the panel
-                                            //ucDash.Dock = DockStyle.Fill;  // Make it fill the panel
-                                            //userControlBooks1.Hide();
-                                            //userControlDashboard1.Show();
-            
+            LoadControl(ucDash);
         }
 
        
@@ -100,28 +170,19 @@ namespace Library_Management_System.UI
         private void btnBooks_Click(object sender, EventArgs e)
         {
             MovePanel(btnBooks);
-            mainPanel.Controls.Clear();      // Clear existing controls in the panel
-            mainPanel.Controls.Add(ucBook); // Add the user control to the panel
-                                            //ucBook.Dock = DockStyle.Fill;  // Make it fill the panel
-                                            //userControlDashboard1.Hide();
-                                            //userControlBooks1.Show();
-            
+            LoadControl(ucBook);
         }
 
         private void btnMembers_Click(object sender, EventArgs e)
         {
             MovePanel(btnMembers);
-            mainPanel.Controls.Clear();      // Clear existing controls in the panel
-            mainPanel.Controls.Add(ucMember); // Add the user control to the panel
-            
+            LoadControl(ucMember);
         }
 
         private void btnBorrowReturn_Click(object sender, EventArgs e)
         {
             MovePanel(btnBorrowReturn);
-            mainPanel.Controls.Clear();
-            mainPanel.Controls.Add(ucBorrow);
-            
+            LoadControl(ucBorrow);
         }
 
        
@@ -129,19 +190,24 @@ namespace Library_Management_System.UI
         private void btnReports_Click(object sender, EventArgs e)
         {
             MovePanel(btnReports);
-            mainPanel.Controls.Clear();
-            mainPanel.Controls.Add(ucReport);
-            
+            LoadControl(ucReport);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            MovePanel(btnSettings);
             DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                Application.ExitThread(); // Terminate current thread
-                System.Diagnostics.Process.Start(Application.ExecutablePath); // Restart the application
+                // Clear the active session
+                CurrentSession.Username = null;
+                CurrentSession.Role = null;
+                CurrentSession.FullName = null;
+                CurrentSession.Email = null;
+
+                // Return to the login screen
+                FormLogin login = new FormLogin();
+                login.Show();
+                Hide();
             }
         }
 
@@ -162,12 +228,10 @@ namespace Library_Management_System.UI
 
        
 
-        private void btnAuthPub_Click(object sender, EventArgs e)
+private void btnAuthPub_Click(object sender, EventArgs e)
         {
             MovePanel(btnAuthPub);
-            mainPanel.Controls.Clear();
-            mainPanel.Controls.Add(ucAuthPub);
-            
+            LoadControl(ucAuthPub);
         }
 
         private void mainPanel_Paint(object sender, PaintEventArgs e)
